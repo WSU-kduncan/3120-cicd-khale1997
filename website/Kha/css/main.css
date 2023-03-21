@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+section{
+	    background-color: #FFFFF7;
+	        width: 95%;
+		    border: solid 1px black;
+		        margin-top: 0px;
+			    margin-bottom: 0px;
+			        margin-left: auto;
+				    margin-right: auto;
+				        padding: 11px;
+				}
+
+				header{
+					    background-color: rgba(0,0,0,.6);
+					        color: rgb(255, 255, 255);
+						    height: 200px;
+						        text-align: center;
+							    line-height: 200px;
+							        font-size: 2.25em;
+								    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+							    }
+
+							    header h1{
+								        margin: 0px;
+									    padding: 0px;
+								    }
+
+								    nav{
+									        height: 50px;
+										    margin-top: 5px;
+										        margin-bottom: 5px;
+											    background-color: rgba(0,0,0,.6);
+											        text-align: center;
+												    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+												        font-weight: bold;
+													    font-size: 1.25em;
+													        display: table;
+														    width: 100%;
+													    }
+
+													    nav strong{
+														        display: table-cell;
+															    vertical-align: middle;
+														    }
+
+														    nav strong a{
+															        margin: 0px;
+																    padding: 0px;
+																        text-decoration: none;
+																	    color: #FFFFFF;
+																    }
+
+																    img{
+																	        width: 250px;
+																		    height: 250px;
+																		        object-fit: contain;
+																		}
+
+																		footer{
+																			    height: 50px;
+																			        margin-top: 5px;
+																				    margin-bottom: 5px;
+																				        background-color: rgba(0,0,0,.6);
+																					    text-align: right;
+																					        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+																						    font-weight: bold;
+																						        font-size: 0.85em;
+																							    color: rgb(255, 255, 255);
+																							        padding-right: 15px;
+																								    display: table;
+																								        width: 99%;
+																								}
+
+																								footer em{
+																									    display: table-cell;
+																									        vertical-align: middle;
+																									}
+
+																									footer em a{
+																										    color: rgb(255, 255, 255);
+																									    }

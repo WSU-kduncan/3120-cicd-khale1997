@@ -24,7 +24,7 @@ jobs:
         run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.TAG }} .
 
       - name: Tag image to DockerHub repo
-        run: docker tag ${{ env.IMAGE_NAME }}:${{ env.TAG }} kenledk1997/khadocker:${{ env.TAG }}
+        run: docker tag ${{ env.IMAGE_NAME }}:${{ env.TAG }} ${{ env.DOCKER_USERNAME }}/khadocker:${{ env.TAG }}
 
       - name: Push Docker image to DockerHub
-        run: docker push ${{ env.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+        run: docker push ${{ env.DOCKER_USERNAME }}/khadocker:${{ env.TAG }}

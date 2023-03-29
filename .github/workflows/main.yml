@@ -1,7 +1,7 @@
 on:
   push:
-    - 'main'
-  workflows-dispatch:
+    branches: [main]
+    workflows-dispatch:
 env:
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

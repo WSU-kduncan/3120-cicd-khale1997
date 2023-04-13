@@ -1,46 +1,47 @@
 on:
   push:
-  branches: [main]
-                workflows-dispatch:
-                      tags:
-                              - "v*.*.*"
-                      env:
-                          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-                              DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    branches: [main]
+    workflows-dispatch:
+    tags:
+      - "v*.*.*"
 
-                              jobs:
-                                  Docker-build-and-push-and-tag:
-                                        runs-on: ubuntu-latest
-                                              steps:
-                                                      - name: Checkout code
-                                                                uses: actions/checkout@v2
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-                                                                        - name: Collecting tag data
-                                                                                  uses: docker/metadata-action@v4
-                                                                                            id: meta
-                                                                                                      with:
-                                                                                                                  images:
-                                                                                                                                kenledk1997/khadocker
-                                                                                                                                          tags:
-                                                                                                                                                        type= semver,pattern={{major}}
-                                                                                                                                                                    type= semver,pattern={{major}}.{{minor}}
+jobs:
+  Docker-build-and-push-and-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-                                                                                                                                                                          - name: Set up QEMU
-                                                                                                                                                                                    uses: docker/setup-qemu-action@v2
+      - name: Collecting tag data
+        uses: docker/metadata-action@v4
+        id: meta
+        with:
+          images:
+            kenledk1997/khadocker
+          tags:
+            type= semver,pattern={{major}}
+            type= semver,pattern={{major}}.{{minor}}
 
-                                                                                                                                                                                            - name: Set up Docker  Buildx
-                                                                                                                                                                                                      uses: docker/setup-buildx-action@v2
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
-                                                                                                                                                                                                              - name: Login to DockerHub
-                                                                                                                                                                                                                        uses: docker/login-action@v2
-                                                                                                                                                                                                                                  with:
-                                                                                                                                                                                                                                              username: ${{ env.DOCKER_USERNAME }}
-                                                                                                                                                                                                                                                          password: ${{ env.DOCKER_PASSWORD }}
+      - name: Set up Docker  Buildx
+        uses: docker/setup-buildx-action@v2
 
-                                                                                                                                                                                                                                                                  - name: Build-and-push
-                                                                                                                                                                                                                                                                            uses: docker/build-push-action@v4
-                                                                                                                                                                                                                                                                                      with:
-                                                                                                                                                                                                                                                                                                  push: true
-                                                                                                                                                                                                                                                                                                                #tags: kenledk1997/khadocker:latest
-                                                                                                                                                                                                                                                                                                                   tags: ${{ steps.meta.outputs.tags }}
-                                                                                                                                                                                                                                                                                                                   labels: ${{ steps.meta.output.labels }}
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ env.DOCKER_PASSWORD }}
+
+      - name: Build-and-push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+            #tags: kenledk1997/khadocker:latest
+            tags: ${{ steps.meta.outputs.tags }}
+            labels: ${{ steps.meta.output.labels }}

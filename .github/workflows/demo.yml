@@ -42,4 +42,4 @@ jobs:
           push: true
             #tags: kenledk1997/khadocker:latest
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.output.labels }
+          labels: ${{ steps.meta.output.labels }}

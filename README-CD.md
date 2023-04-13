@@ -1,4 +1,4 @@
-PART 1:
+PART 1: workflow for cd project name demo.yml
   - Overview:
     - This project continues what have done in project 4.
     - However, in this project, image will be built and tagged not only "latest", but also with a version (ex: v1.1.0)
